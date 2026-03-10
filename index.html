@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>きめるん — 迷ったとき、そっと背中を押すアプリ</title>
+  <meta name="description" content="レストランのメニュー、週末の予定…日常の「どっちにしよう？」をやさしく解決するWebアプリ">
+  <meta property="og:title" content="きめるん — 迷ったとき、そっと背中を押すアプリ">
+  <meta property="og:description" content="日常の迷いをやさしく解決するWebアプリ">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Outfit:wght@400;600;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- ===== Header ===== -->
+    <header class="header">
+      <h1 class="header__title">
+        <span class="header__icon">🤔</span>
+        きめるん
+      </h1>
+      <p class="header__subtitle">迷ったとき、そっと背中を押すアプリ</p>
+    </header>
+
+    <!-- ===== Input Section ===== -->
+    <section id="input-section" class="section card">
+      <h2 class="section__title">選択肢を入力</h2>
+
+      <!-- Preset Templates -->
+      <div class="presets">
+        <button class="preset-btn" data-preset="lunch" id="preset-lunch">🍽️ ランチ</button>
+        <button class="preset-btn" data-preset="weekend" id="preset-weekend">☀️ 週末</button>
+        <button class="preset-btn" data-preset="movie" id="preset-movie">🎬 映画ジャンル</button>
+      </div>
+
+      <!-- Choice Inputs -->
+      <div id="choices-container" class="choices-container">
+        <!-- Dynamic inputs will be inserted here -->
+      </div>
+
+      <div class="input-actions">
+        <button id="add-choice-btn" class="btn btn--secondary" title="選択肢を追加">
+          <span class="btn__icon">＋</span> 追加
+        </button>
+      </div>
+
+      <!-- Method Selector -->
+      <div class="method-selector" id="method-selector">
+        <button class="method-btn active" data-method="shuffle" id="method-shuffle">
+          <span class="method-btn__icon">🃏</span>
+          カード
+        </button>
+        <button class="method-btn" data-method="wheel" id="method-wheel">
+          <span class="method-btn__icon">🎡</span>
+          ホイール
+        </button>
+        <button class="method-btn" data-method="random" id="method-random">
+          <span class="method-btn__icon">✨</span>
+          ランダム
+        </button>
+      </div>
+
+      <button id="start-btn" class="btn btn--primary btn--large" disabled>
+        決めてみる
+      </button>
+    </section>
+
+    <!-- ===== Selection Section ===== -->
+    <section id="selection-section" class="section selection-section hidden">
+      <!-- Shuffle Cards Stage -->
+      <div id="shuffle-stage" class="shuffle-stage hidden">
+        <!-- Dynamic cards -->
+      </div>
+
+      <!-- Wheel Stage -->
+      <div id="wheel-stage" class="wheel-stage hidden">
+        <div class="wheel-wrapper">
+          <div class="wheel-pointer">▼</div>
+          <canvas id="wheel-canvas" width="300" height="300"></canvas>
+        </div>
+      </div>
+
+      <!-- Random Pick Stage -->
+      <div id="random-stage" class="random-stage hidden">
+        <div id="random-display" class="random-display">—</div>
+      </div>
+
+      <button id="decide-btn" class="btn btn--primary btn--large">
+        決める！
+      </button>
+
+      <button id="back-to-input-btn" class="btn btn--ghost">
+        ← 選択肢を変更
+      </button>
+    </section>
+
+    <!-- ===== Result Section ===== -->
+    <section id="result-section" class="section result-section hidden">
+      <div class="result-card">
+        <p class="result-emoji">🎉</p>
+        <p class="result-label">あなたの選択は…</p>
+        <p id="result-text" class="result-text"></p>
+      </div>
+
+      <div class="result-actions">
+        <button id="retry-btn" class="btn btn--primary">
+          <span class="btn__icon">↻</span> もう一度
+        </button>
+        <button id="change-btn" class="btn btn--secondary">
+          <span class="btn__icon">✏️</span> 選択肢を変更
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== History Section ===== -->
+    <section id="history-section" class="section history-section">
+      <div class="history-header">
+        <h2 class="section__title">📋 決定の履歴</h2>
+        <button id="clear-history-btn" class="btn btn--ghost btn--small">クリア</button>
+      </div>
+      <ul id="history-list" class="history-list">
+        <!-- Dynamic history items -->
+      </ul>
+      <p id="history-empty" class="history-empty">まだ履歴がありません</p>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <p>© 2026 きめるん</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
